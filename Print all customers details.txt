@@ -1,0 +1,32 @@
+Print all customers details:
+
+
+This prints the details of all the customers.
+  Here is the code implementation
+
+
+
+void alcustomersdetails(listnode* lst)
+{
+listnode* ptr=lst->head;
+while(ptr!=NULL)
+{
+Bank* cust=ptr->obj;
+cout<<cust->name<<endl;
+cout<<cust->balance<<endl;
+stack<long int> s=cust->trans_history;
+cout<<"---Transaction history---"<<endl;
+while(!s.empty())
+{
+long int stt=s.top();
+if(stt<0)
+ cout<<"Amount Debited : "<<(stt*-1)<<endl;
+else
+cout<<"Amount Credited"<<stt<<endl;
+s.pop();
+}
+cout<<endl;
+cout<<endl;
+ptr=ptr->next;
+}
+}

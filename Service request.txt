@@ -1,0 +1,15 @@
+Service request:
+This prints all the transactions done till now.
+
+
+
+void print(queue<string> q)
+{
+queue<string> p;
+p=q;
+cout<<endl;
+while(!p.empty()){
+  cout<<p.front()<<endl;
+  p.pop();
+}
+}

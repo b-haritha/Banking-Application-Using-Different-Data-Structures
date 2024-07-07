@@ -1,0 +1,56 @@
+Transfer amount from one account to other account:
+   The customer have to enter their account number. If this account number is valid (lets say 'a')then the customer is asked to enter the account number of the customer(lets say 'b') to whom s/he want to transfer money.
+If both the account numbers are valid, then the transaction takes place.
+The amount will be deducted from account 'a' and added to account 'b'.
+These transaction details will be added to the transaction of accounts 'a' and 'b'.
+
+
+---------------------------------------------------------------------------------
+Here is the code implementation
+
+void transfer()
+{
+cout<<"Enter Account No."<<endl;
+int acc;
+cin>>acc;
+listnode* ptr=lst;
+while(ptr!=NULL)
+{
+      Bank* cust=ptr->obj;
+
+if(cust->acc_number==acc)
+{
+   cout<<"Account number to transfer";
+   int a;
+   cin>>a;
+    listnode* p=lst;
+   while(p!=NULL)
+    {
+      Bank* cust2=p->obj;
+if(cust2->acc_number==a)
+{
+
+cout<<"Enter Amount"<<endl;
+int amt;
+cin>>amt;
+if(cust->balance<amt)
+ cout<<"Not Enough Balance"<<endl;
+else
+{
+cust->balance-=amt;
+cust2->balance+=amt;
+
+   cust2->trans_history.push(amt);
+ 
+   cust->trans_history.push(amt*-1);}
+   
+break;
+}
+p=p->next;
+}  
+}
+ptr=ptr->next;
+}
+if(ptr==NULL)
+ cout<<"Account doesn't exist"<<endl;
+}

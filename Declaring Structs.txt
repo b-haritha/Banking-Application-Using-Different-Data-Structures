@@ -1,0 +1,27 @@
+For Creating an account and for holding all the accounts together we have to create a struct named Bank and a linked list.
+We want to hold basic details of the customer like their name, account number, balance and their transaction history.
+for holding name we declare a string variable, for account number int or long int variable according to the requirement, for holding balance double or float, for holding transaction history a stack of integers is created.
+For holding all the accounts together we created a Linkedlist called listnode. it just have a next and head pointers and object of Bank struct.
+
+------------------
+Here is the implementation:
+
+
+
+struct Bank
+{
+string name;
+int acc_number;
+float balance;
+stack<long int> trans_history;
+};
+
+
+
+
+struct listnode
+{
+Bank* obj;
+listnode* next;
+listnode* head;
+};

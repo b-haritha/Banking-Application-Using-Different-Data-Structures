@@ -1,0 +1,45 @@
+Print bank details:
+  This prints the account details of the customer like balance amount and transaction history.
+The customer have to enter their bank account number.
+Using that their account will be retrieved.
+After that all the details will be printed.
+-----------------------------------------------
+Here is the code implementation:
+
+
+void printbankdetails()
+{
+cout<<"Enter Account No.";
+int num;
+cin>>num;
+listnode* ptr=lst;
+while(ptr!=NULL)
+{
+      Bank* cust=ptr->obj;
+
+if(cust->acc_number==num)
+{
+cout<<cust->name<<endl;
+cout<<cust->balance<<endl;
+stack<long int> s=cust->trans_history;
+cout<<"---Transaction history---"<<endl;
+while(!s.empty())
+{
+long int stt=s.top();
+if(stt<0)
+ cout<<"Amount Debited : "<<(stt*-1)<<endl;
+else
+cout<<"Amount Credited"<<stt<<endl;
+s.pop();
+}
+cout<<endl;
+break;
+}
+ptr=ptr->next;
+}
+if(ptr==NULL)
+ cout<<"Account doesn't exist"<<endl;
+
+}
+
+

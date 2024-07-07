@@ -1,0 +1,35 @@
+Deposit amount:
+   The customer have to enter their account number, if the account number is present in accounts then it will print "account doesn't exist" . if an account is found with the given account number then the customer is asked to enter the amount s/he want to deposit.
+The deposited money will be added to the total balance.
+This transaction will also be added to transaction history.
+----------------------------------------------
+Here is the code implementation :
+
+void deposit()
+{
+cout<<"Enter Account No."<<endl;
+int acc;
+cin>>acc;
+listnode* ptr=lst;
+while(ptr!=NULL)
+{
+      Bank* cust=ptr->obj;
+
+if(cust->acc_number==acc)
+{
+
+   cout<<"Amount to deposit"<<endl;
+   int amt;
+   cin>>amt;
+   cust->balance+=amt;
+   cust->trans_history.push(amt);
+   break;
+}
+ptr=ptr->next;
+}
+if(ptr==NULL)
+ cout<<"Account doesn't exist"<<endl;
+}
+
+
+

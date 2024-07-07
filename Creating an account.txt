@@ -1,0 +1,58 @@
+To create an account, the customer have to enter their details.
+Then after reading in the details a new object of struct  Bank will be created and initialised with the provided values.
+Then it is appended to the linkedlist of accounts.
+
+-------------------------------------------
+Here is the code implementation:
+
+
+
+
+
+
+void createacc(listnode* lst)
+{
+Bank* b=new Bank();
+cout<<"Enter Name"<<endl;
+string n;
+cin>>n;
+b->name=n;
+cout<<"Enter Account No."<<endl;
+int numm;
+cin>>numm;
+b->acc_number=numm;
+b->balance=1000.0;
+stack<long int> st;
+st.push(b->balance);
+b->trans_history=st;
+
+insert(lst,b);
+}
+
+
+void insert(listnode* lst,Bank* b)
+{
+if(lst->head==NULL)
+{
+
+  lst->next=NULL;
+lst->obj=b;
+lst->head=lst;
+}
+else
+ {
+ 
+  listnode* ptr=lst->head;
+  while(ptr->next!=NULL)
+    ptr=ptr->next;
+  listnode* l=new listnode();
+  l->obj=b;
+  l->next=NULL;
+  l->head=NULL;
+  ptr->next=l;
+
+ }
+}
+
+
+

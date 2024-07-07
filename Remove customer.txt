@@ -1,0 +1,29 @@
+Remove customer
+
+
+   If some customer want to delete their account then they have to choose this option.
+They have to enter their account number. Using this number the account holding this number will be deleted.
+--------------------------
+Here is the code implementation
+
+
+void remove(listnode* lst)
+{
+
+listnode* ptr=lst->head;
+cout<<"Enter Account No."<<endl;
+int acc;
+cin>>acc;
+listnode* prev=NULL;
+while(ptr!=NULL)
+{
+Bank* b=new Bank();
+b=ptr->obj;
+if(b->acc_number==acc)
+   break;
+prev=ptr;
+ptr=ptr->next;
+}
+if(prev!=NULL)
+ prev->next=ptr->next;
+}
