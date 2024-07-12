@@ -9,8 +9,6 @@ stack<long int> trans_history;
 };
 
 
-
-
 struct listnode
 {
 Bank* obj;
@@ -71,7 +69,66 @@ insert(lst,b);
 }
 
 
+void deposit()
+{
+cout<<"Enter Account No."<<endl;
+int acc;
+cin>>acc;
+listnode* ptr=lst;
+while(ptr!=NULL)
+{
+      Bank* cust=ptr->obj;
 
+if(cust->acc_number==acc)
+{
+
+   cout<<"Amount to deposit"<<endl;
+   int amt;
+   cin>>amt;
+   cust->balance+=amt;
+   cust->trans_history.push(amt);
+   break;
+}
+ptr=ptr->next;
+}
+if(ptr==NULL)
+ cout<<"Account doesn't exist"<<endl;
+}
+
+
+void withdraw()
+{
+cout<<"Enter Account No."<<endl;
+int acc;
+cin>>acc;
+listnode* ptr=lst;
+int flag=1;
+while(ptr!=NULL)
+{
+      Bank* cust=ptr->obj;
+
+if(cust->acc_number==acc)
+{
+flag=0;
+   cout<<"Enter Amount to Withdraw"<<endl;
+   int amt;
+   cin>>amt;
+   if(cust->balance<amt)
+      cout<<"No Enough Balance"<<endl;
+   else
+   {
+
+   cust->balance-=amt;
+   cust->trans_history.push((amt*-1));
+}
+   break;
+}
+ptr=ptr->next;
+}
+if(flag)
+ cout<<"Account doesn't exist"<<endl;
+
+}
 
 void printbankdetails()
 {
@@ -110,67 +167,8 @@ if(ptr==NULL)
 
 
 
-void withdraw()
-{
-cout<<"Enter Account No."<<endl;
-int acc;
-cin>>acc;
-listnode* ptr=lst;
-int flag=1;
-while(ptr!=NULL)
-{
-      Bank* cust=ptr->obj;
-
-if(cust->acc_number==acc)
-{
-flag=0;
-   cout<<"Enter Amount to Withdraw"<<endl;
-   int amt;
-   cin>>amt;
-   if(cust->balance<amt)
-      cout<<"No Enough Balance"<<endl;
-   else
-   {
-
-   cust->balance-=amt;
-   cust->trans_history.push((amt*-1));
-}
-   break;
-}
-ptr=ptr->next;
-}
-if(flag)
- cout<<"Account doesn't exist"<<endl;
-
-}
 
 
-
-void deposit()
-{
-cout<<"Enter Account No."<<endl;
-int acc;
-cin>>acc;
-listnode* ptr=lst;
-while(ptr!=NULL)
-{
-      Bank* cust=ptr->obj;
-
-if(cust->acc_number==acc)
-{
-
-   cout<<"Amount to deposit"<<endl;
-   int amt;
-   cin>>amt;
-   cust->balance+=amt;
-   cust->trans_history.push(amt);
-   break;
-}
-ptr=ptr->next;
-}
-if(ptr==NULL)
- cout<<"Account doesn't exist"<<endl;
-}
 
 
 
